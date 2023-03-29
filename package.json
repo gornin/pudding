@@ -3,7 +3,7 @@
   "displayName": "汉字转拼音",
   "publisher": "gornin",
   "description": "汉字转拼音",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "email": "gorningo@outlook.com",
   "engines": {
     "vscode": "^1.76.0"
@@ -12,6 +12,10 @@
   "categories": [
     "Other"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gornin/cc2py.git"
+  },
   "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
@@ -26,14 +30,14 @@
         "vscodePluginDemo.showTip": {
           "type": "boolean",
           "default": true,
-          "description": "welcome back！"
+          "description": "欢迎，欢迎！"
         }
       }
     },
     "commands": [
       {
         "command": "cc2py.executeDefinitionProvider",
-        "title": "转拼音"
+        "title": "转大写拼音"
       }
     ],
     "menus": {
