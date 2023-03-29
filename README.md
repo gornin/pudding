@@ -2,16 +2,16 @@
 
 author: [gornin](https://github.com/gornin)
 
-初衷：最近在做公司的一个国际化项目，简繁外语等字体的locale配置太恶心繁琐了。能提高一点效率，也算拯救自己于水火。
+初衷：最近在做公司的一个国际化项目，简繁外语等字体的locale配置太恶心繁琐了。能提高一点效率，也算幸甚。
 
 感谢：vscode、juejin社区、market里的vscode插件
 
 ## 支持快捷键
 
-`u`—— `uppercase` 大写
-`l`—— `lowercase` 小写
-`f`—— `traditional` 繁体
-`j`—— `simplified` 简体
+- `u`—— `uppercase` 大写
+- `l`—— `lowercase` 小写
+- `f`—— `traditional` 繁体
+- `j`—— `simplified` 简体
 
 ```json
 "keybindings": [

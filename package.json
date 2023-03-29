@@ -3,7 +3,7 @@
   "displayName": "汉字处理助手",
   "publisher": "gornin",
   "description": "汉字转拼音，简繁互换",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "email": "gorningo@outlook.com",
   "engines": {
     "vscode": "^1.76.0"
