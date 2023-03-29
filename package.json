@@ -3,7 +3,7 @@
   "displayName": "汉字转拼音",
   "publisher": "gornin",
   "description": "汉字转拼音",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "email": "gorningo@outlook.com",
   "engines": {
     "vscode": "^1.76.0"
