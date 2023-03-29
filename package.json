@@ -1,9 +1,9 @@
 {
   "name": "cc2py",
-  "displayName": "汉字转拼音",
+  "displayName": "汉字处理助手",
   "publisher": "gornin",
-  "description": "汉字转拼音",
-  "version": "0.0.3",
+  "description": "汉字转拼音，简繁互换",
+  "version": "0.1.0",
   "email": "gorningo@outlook.com",
   "engines": {
     "vscode": "^1.76.0"
@@ -20,7 +20,7 @@
   "main": "./out/extension.js",
   "contributes": {
     "configuration": {
-      "title": "code : ch -> py",
+      "title": "汉字处理助手",
       "properties": {
         "vscodePluginDemo.yourName": {
           "type": "string",
@@ -36,14 +36,67 @@
     },
     "commands": [
       {
-        "command": "cc2py.executeDefinitionProvider",
-        "title": "转大写拼音"
+        "command": "cc2py.chars-2-pinyin-upper",
+        "title": "汉字->拼音大"
+      },
+      {
+        "command": "cc2py.chars-2-pinyin-lower",
+        "title": "汉字->拼音小"
+      },
+      {
+        "command": "cc2py.s-2-t",
+        "title": "简->繁"
+      },
+      {
+        "command": "cc2py.t-2-s",
+        "title": "繁->简"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "cc2py.chars-2-pinyin-upper",
+        "key": "ctrl+shift+alt+u",
+        "mac": "ctrl+alt+cmd+u",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "cc2py.chars-2-pinyin-lower",
+        "key": "ctrl+shift+alt+l",
+        "mac": "ctrl+alt+cmd+l",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "cc2py.s-2-t",
+        "key": "ctrl+shift+alt+f",
+        "mac": "ctrl+alt+cmd+f",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "cc2py.t-2-s",
+        "key": "ctrl+shift+alt+j",
+        "mac": "ctrl+alt+cmd+j",
+        "when": "editorTextFocus"
       }
     ],
     "menus": {
       "editor/context": [
         {
-          "command": "cc2py.executeDefinitionProvider",
+          "command": "cc2py.chars-2-pinyin-upper",
+          "group": "navigation",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "cc2py.chars-2-pinyin-lower",
+          "group": "navigation",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "cc2py.s-2-t",
+          "group": "navigation",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "cc2py.t-2-s",
           "group": "navigation",
           "when": "editorHasSelection"
         }
@@ -56,7 +109,10 @@
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
-    "test": "node ./out/test/runTest.js"
+    "test": "node ./out/test/runTest.js",
+    "package": "vsce package",
+    "publish": "run-s prod package",
+    "postinstall": "node ./node_modules/vscode/bin/install"
   },
   "devDependencies": {
     "@types/glob": "^8.1.0",
