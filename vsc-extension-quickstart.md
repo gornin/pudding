@@ -14,7 +14,7 @@
   * We pass the function containing the implementation of the command as the second parameter to `registerCommand`.
   * 我们将包含该命令实现的函数作为第二个参数传递给`registerCommand`
 
-## Get up and running straight away 程序跑起來
+## Get up and running straight away 程序跑起来
 
 * Press `F5` to open a new window with your extension loaded.
 * 按“F5”打开一个加载了扩展的新窗口。
@@ -67,7 +67,7 @@
  * 使用[bundling your extension](https://code.visualstudio.com/api/working-with-extensions/bundling-extension)减少扩展大小和提高启动时间
 
  * [Publish your extension](https://code.visualstudio.com/api/working-with-extensions/publishing-extension) on the VS Code extension marketplace.
- * 在VS Code扩展市场上發布你的插件
+ * 在VS Code扩展市场上发布你的插件
 
  * Automate builds by setting up [Continuous Integration](https://code.visualstudio.com/api/working-with-extensions/continuous-integration).
  * 设置自动化构建
