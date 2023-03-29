@@ -14,8 +14,8 @@ type HASHTYPE = Record<string, string>;
 export default function transverter(str: string, options: OPTIONS) {
   const opts = Object.assign(
     {
-      type: "simplified",
-      language: "",
+      type: "simplified", // 目标字体
+      language: "", // 用于转换台湾称呼
     },
     options
   );
