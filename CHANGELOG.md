@@ -33,3 +33,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## [0.1.2]
 
 - 项目文档改动，汉字统一只使用中文简体，代码未改动
+
+## [0.1.3]
+
+- 为package.json添加keywords

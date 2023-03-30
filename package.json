@@ -3,7 +3,7 @@
   "displayName": "汉字处理助手",
   "publisher": "gornin",
   "description": "汉字转拼音，简繁互换，TO BE CONTINUED...",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "email": "gorningo@outlook.com",
   "engines": {
     "vscode": "^1.76.0"
@@ -12,9 +12,16 @@
   "categories": [
     "Other"
   ],
+  "keywords": [
+    "简体",
+    "繁体",
+    "拼音",
+    "gornin",
+    "汉字"
+  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/gornin/cc2py.git"
+    "url": "https://github.com/gornin/cc2py"
   },
   "activationEvents": [],
   "main": "./out/extension.js",
