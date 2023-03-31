@@ -2,8 +2,9 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
 import pinyin from "pinyin";
-import transverter, { OPTIONS } from "./transverter";
 import { IPinyinMode, IPinyinOptions, IPinyinStyle } from "pinyin/lib/declare";
+import transverter, { OPTIONS } from "./transverter";
+import { shouldCopy, copyToClipboard, generateTextToCopy } from "./copy2clipboard";
 
 /**
  * 处理简繁转换
@@ -59,7 +60,7 @@ function transform2Py(
 
 const PY_COMMANDS = [
   {
-    command: "cc2py.chars-2-pinyin-upper",
+    command: "pudding.chars-2-pinyin-upper",
     options: {
       style: "normal" as IPinyinStyle, // 普通风格，即不带声调。
       mode: "normal" as IPinyinMode,
@@ -73,7 +74,7 @@ const PY_COMMANDS = [
     func: transform2Py,
   },
   {
-    command: "cc2py.chars-2-pinyin-lower",
+    command: "pudding.chars-2-pinyin-lower",
     options: {
       style: "normal" as IPinyinStyle, // 普通风格，即不带声调。
       mode: "normal" as IPinyinMode,
@@ -90,19 +91,19 @@ const PY_COMMANDS = [
 
 const TS_COMMANDS = [
   {
-    command: "cc2py.s-2-t",
+    command: "pudding.s-2-t",
     options: { type: "traditional", language: "" },
   },
   {
-    command: "cc2py.t-2-s",
+    command: "pudding.t-2-s",
     options: { type: "simplified", language: "" },
   },
   {
-    command: "cc2py.s-2-t-tw",
+    command: "pudding.s-2-t-tw",
     options: { type: "traditional", language: "zh_TW" },
   },
   {
-    command: "cc2py.t-2-s-tw",
+    command: "pudding.t-2-s-tw",
     options: { type: "simplified", language: "zh_TW" },
   },
 ];
@@ -110,6 +111,21 @@ const TS_COMMANDS = [
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
+
+  vscode.window.onDidChangeTextEditorSelection(function (event: vscode.TextEditorSelectionChangeEvent) {
+    if (shouldCopy(event)) {
+      const text = generateTextToCopy(event);
+      copyToClipboard(text);
+    }
+
+    // awaiter(this, void 0, void 0, function* () {
+    //   if (shouldCopy(event)) {
+    //     const text = generateTextToCopy(event);
+    //     yield copyToClipboard(text);
+    //   }
+    // });
+  });
+
   PY_COMMANDS.forEach((item) => {
     context.subscriptions.push(
       vscode.commands.registerCommand(item.command, () =>
@@ -131,4 +147,4 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 // This method is called when your extension is deactivated
-export function deactivate() {}
+export function deactivate() { }

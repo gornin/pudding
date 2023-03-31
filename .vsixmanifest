@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 	<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
 		<Metadata>
-			<Identity Language="en-US" Id="cc2py" Version="0.0.3" Publisher="gornin" />
-			<DisplayName>汉字处理助手</DisplayName>
-			<Description xml:space="preserve">把中文修改为拼音 比如: 选中&apos;中国&apos; 这两个字后鼠标右键 ‘转大写拼音’ 可替换为 ZHONG_GUO；简繁转换；可以通过右键菜单选项或者快捷键完成操作。 </Description>
-			<Tags>中文,拼音,中文简体,中文繁體</Tags>
+			<Identity Language="en-US" Id="pudding" Version="1.0.0" Publisher="gornin" />
+			<DisplayName>布丁助手</DisplayName>
+			<Description xml:space="preserve">提高开发效率</Description>
+			<Tags>中文,拼音,中文简体,中文繁體,选中文字,自动复制,剪切板</Tags>
 			<Categories>Other</Categories>
 			<GalleryFlags>Public</GalleryFlags>
 			
+			<!-- 把中文修改为拼音 比如: 选中&apos;中国&apos; 这两个字后鼠标右键 ‘转大写拼音’ 可替换为 ZHONG_GUO；简繁转换；可以通过右键菜单选项或者快捷键完成操作。 -->
+
 			<Properties>
 				<Property Id="Microsoft.VisualStudio.Code.Engine" Value="^1.76.0" />
 				<Property Id="Microsoft.VisualStudio.Code.ExtensionDependencies" Value="" />
@@ -26,7 +28,7 @@
 		<Assets>
 			<Asset Type="Microsoft.VisualStudio.Code.Manifest" Path="extension/package.json" Addressable="true" />
 			<Asset Type="Microsoft.VisualStudio.Services.Content.Details" Path="extension/README.md" Addressable="true" />
-            <Asset Type="Microsoft.VisualStudio.Services.Content.Changelog" Path="extension/CHANGELOG.md" Addressable="true" />
-            <Asset Type="Microsoft.VisualStudio.Services.Icons.Default" Path="extension/images/gyl.png" Addressable="true" />
+			<Asset Type="Microsoft.VisualStudio.Services.Content.Changelog" Path="extension/CHANGELOG.md" Addressable="true" />
+			<Asset Type="Microsoft.VisualStudio.Services.Icons.Default" Path="extension/images/gyl.png" Addressable="true" />
 		</Assets>
 	</PackageManifest>

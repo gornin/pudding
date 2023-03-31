@@ -1,8 +1,8 @@
 # Change Log 变更日志
 
-All notable changes to the "cc2py" extension will be documented in this file.
+All notable changes to the "pudding" extension will be documented in this file.
 
-对“cc2py”扩展的所有显著更改都将记录在此文件中。
+对“pudding”扩展的所有显著更改都将记录在此文件中。
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
@@ -37,3 +37,11 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## [0.1.3]
 
 - 为package.json添加keywords
+
+## [0.2.0]
+
+- 选中文字自动存剪切板
+
+## [1.0.0]
+
+- 更名为【布丁助手】，推出v1版本

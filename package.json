@@ -1,9 +1,9 @@
 {
-  "name": "cc2py",
-  "displayName": "汉字处理助手",
+  "name": "pudding",
+  "displayName": "布丁助手",
   "publisher": "gornin",
-  "description": "汉字转拼音，简繁互换，TO BE CONTINUED...",
-  "version": "0.1.3",
+  "description": "汉字转拼音、简繁互换、自动复制、TO BE CONTINUED...",
+  "version": "1.0.0",
   "email": "gorningo@outlook.com",
   "engines": {
     "vscode": "^1.76.0"
@@ -13,11 +13,15 @@
     "Other"
   ],
   "keywords": [
+    "布丁",
     "简体",
     "繁体",
     "拼音",
+    "选中复制",
+    "剪切板",
+    "汉字",
     "gornin",
-    "汉字"
+    "pudding"
   ],
   "repository": {
     "type": "git",
@@ -27,59 +31,79 @@
   "main": "./out/extension.js",
   "contributes": {
     "configuration": {
-      "title": "汉字处理助手",
+      "title": "布丁助手",
       "properties": {
-        "vscodePluginDemo.yourName": {
+        "pudding.yourName": {
           "type": "string",
           "default": "guest",
-          "description": "gornin"
+          "description": "布丁"
         },
-        "vscodePluginDemo.showTip": {
+        "pudding.showTip": {
           "type": "boolean",
           "default": true,
           "description": "欢迎，欢迎！"
+        },
+        "pudding.copyOnKeyboardSelection": {
+          "type": "boolean",
+          "default": false,
+          "description": "当使用键盘选择文本时，是否复制所选文本？"
+        },
+        "pudding.copyOnMouseSelection": {
+          "type": "boolean",
+          "default": true,
+          "description": "当使用鼠标选择文本时，是否复制所选文本？"
+        },
+        "pudding.trimStartBlank": {
+          "type": "boolean",
+          "default": false,
+          "description": "是否修剪所选文本的开头空白部分?"
+        },
+        "pudding.trimEndBlank": {
+          "type": "boolean",
+          "default": true,
+          "description": "是否修剪所选文本的结尾空白部分?"
         }
       }
     },
     "commands": [
       {
-        "command": "cc2py.chars-2-pinyin-upper",
+        "command": "pudding.chars-2-pinyin-upper",
         "title": "汉字->拼音大"
       },
       {
-        "command": "cc2py.chars-2-pinyin-lower",
+        "command": "pudding.chars-2-pinyin-lower",
         "title": "汉字->拼音小"
       },
       {
-        "command": "cc2py.s-2-t",
+        "command": "pudding.s-2-t",
         "title": "简->繁"
       },
       {
-        "command": "cc2py.t-2-s",
+        "command": "pudding.t-2-s",
         "title": "繁->简"
       }
     ],
     "keybindings": [
       {
-        "command": "cc2py.chars-2-pinyin-upper",
+        "command": "pudding.chars-2-pinyin-upper",
         "key": "ctrl+shift+alt+u",
         "mac": "ctrl+alt+cmd+u",
         "when": "editorTextFocus"
       },
       {
-        "command": "cc2py.chars-2-pinyin-lower",
+        "command": "pudding.chars-2-pinyin-lower",
         "key": "ctrl+shift+alt+l",
         "mac": "ctrl+alt+cmd+l",
         "when": "editorTextFocus"
       },
       {
-        "command": "cc2py.s-2-t",
+        "command": "pudding.s-2-t",
         "key": "ctrl+shift+alt+f",
         "mac": "ctrl+alt+cmd+f",
         "when": "editorTextFocus"
       },
       {
-        "command": "cc2py.t-2-s",
+        "command": "pudding.t-2-s",
         "key": "ctrl+shift+alt+j",
         "mac": "ctrl+alt+cmd+j",
         "when": "editorTextFocus"
@@ -88,23 +112,23 @@
     "menus": {
       "editor/context": [
         {
-          "command": "cc2py.chars-2-pinyin-upper",
-          "group": "navigation",
+          "command": "pudding.chars-2-pinyin-upper",
+          "group": "navigation@1",
           "when": "editorHasSelection"
         },
         {
-          "command": "cc2py.chars-2-pinyin-lower",
-          "group": "navigation",
+          "command": "pudding.chars-2-pinyin-lower",
+          "group": "navigation@2",
           "when": "editorHasSelection"
         },
         {
-          "command": "cc2py.s-2-t",
-          "group": "navigation",
+          "command": "pudding.s-2-t",
+          "group": "navigation@3",
           "when": "editorHasSelection"
         },
         {
-          "command": "cc2py.t-2-s",
-          "group": "navigation",
+          "command": "pudding.t-2-s",
+          "group": "navigation@4",
           "when": "editorHasSelection"
         }
       ]

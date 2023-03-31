@@ -1,10 +1,19 @@
-# 汉字处理助手
+# 布丁助手
 
 author: [gornin](https://github.com/gornin)
 
 初衷：最近在做公司的一个国际化项目，简繁外语等字体的locale配置太恶心繁琐了。能提高一点效率，也算幸甚。
 
+名称由来：`布丁`是我儿子的小名～
+
 感谢：vscode、juejin社区、market里的vscode插件
+
+## 功能点
+
+- 选中汉字转大写拼音，拼接 `_` ，单向操作
+- 选中汉字转小写拼音，拼接 `_` ，单向操作
+- 选中汉字 <strong>简繁互转</strong>，支持双向操作
+- 选中文字可 <u>自动存入</u> 剪切板，可随即CV到别处
 
 ## 支持快捷键
 
@@ -38,7 +47,8 @@ author: [gornin](https://github.com/gornin)
 ],
 ```
 
-### 支持右键菜单
+## 支持右键菜单
+
 ```json
 "menus": {
     "editor/context": [
