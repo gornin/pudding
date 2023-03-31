@@ -67,3 +67,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## [1.0.6]
 
 - 修复自动复制功能
+
+## [1.0.7]
+
+- 移除消息通知

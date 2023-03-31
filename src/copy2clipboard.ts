@@ -68,7 +68,7 @@ export async function copyToClipboard(text: string) {
   }
   try {
     await vscode.env.clipboard.writeText(text);
-    await vscode.window.showInformationMessage(`${text.length > 10 ? `${text.substring(0, 10)}...` : text} saved to clipboard`);
+    // await vscode.window.showInformationMessage(`${text.length > 10 ? `${text.substring(0, 10)}...` : text} saved to clipboard`);
   } catch (error) {
     vscode.window.showErrorMessage(`selection copy fail. Error: ${JSON.stringify(error)}`);
   }
