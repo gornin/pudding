@@ -3,10 +3,10 @@
   "displayName": "布丁助手",
   "publisher": "gornin",
   "description": "汉字转拼音、简繁互换、自动复制、TO BE CONTINUED...",
-  "version": "1.0.2",
+  "version": "1.0.6",
   "email": "gorningo@outlook.com",
   "engines": {
-    "vscode": "^1.76.0"
+    "vscode": "^1.46.0"
   },
   "icon": "images/gyl.png",
   "categories": [
@@ -27,22 +27,14 @@
     "type": "git",
     "url": "https://github.com/gornin/pudding"
   },
-  "activationEvents": [],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "main": "./out/extension.js",
   "contributes": {
     "configuration": {
       "title": "布丁助手",
       "properties": {
-        "pudding.yourName": {
-          "type": "string",
-          "default": "guest",
-          "description": "你的名字"
-        },
-        "pudding.showTip": {
-          "type": "boolean",
-          "default": true,
-          "description": "是否在每次启动时显示欢迎提示！"
-        },
         "pudding.copyOnKeyboardSelection": {
           "type": "boolean",
           "default": false,
@@ -113,22 +105,22 @@
       "editor/context": [
         {
           "command": "pudding.chars-2-pinyin-upper",
-          "group": "navigation@1",
+          "group": "navigation@11",
           "when": "editorHasSelection"
         },
         {
           "command": "pudding.chars-2-pinyin-lower",
-          "group": "navigation@2",
+          "group": "navigation@12",
           "when": "editorHasSelection"
         },
         {
           "command": "pudding.s-2-t",
-          "group": "navigation@3",
+          "group": "navigation@13",
           "when": "editorHasSelection"
         },
         {
           "command": "pudding.t-2-s",
-          "group": "navigation@4",
+          "group": "navigation@14",
           "when": "editorHasSelection"
         }
       ]
@@ -140,16 +132,13 @@
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
-    "test": "node ./out/test/runTest.js",
-    "package": "vsce package",
-    "publish": "run-s prod package",
-    "postinstall": "node ./node_modules/vscode/bin/install"
+    "test": "node ./out/test/runTest.js"
   },
   "devDependencies": {
     "@types/glob": "^8.1.0",
     "@types/mocha": "^10.0.1",
     "@types/node": "16.x",
-    "@types/vscode": "^1.76.0",
+    "@types/vscode": "^1.46.0",
     "@typescript-eslint/eslint-plugin": "^5.56.0",
     "@typescript-eslint/parser": "^5.56.0",
     "@vscode/test-electron": "^2.3.0",
@@ -159,6 +148,7 @@
     "typescript": "^4.9.5"
   },
   "dependencies": {
+    "debounce": "1.0.0",
     "pinyin": "^3.0.0-alpha.5"
   }
 }

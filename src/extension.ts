@@ -2,6 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
 import pinyin from "pinyin";
+const debounce = require('debounce');
 import { IPinyinMode, IPinyinOptions, IPinyinStyle } from "pinyin/lib/declare";
 import transverter, { OPTIONS } from "./transverter";
 import { shouldCopy, copyToClipboard, generateTextToCopy } from "./copy2clipboard";
@@ -52,6 +53,8 @@ function transform2Py(
   let str = pinyinArr.toString().replaceAll(",", connector);
   if (type === "upper") {
     str = str.toUpperCase();
+  } else {
+    str = str.toLowerCase();
   }
   activeEditor.edit((editBuilder) => {
     editBuilder.replace(activeEditor.selection, str);
@@ -108,23 +111,18 @@ const TS_COMMANDS = [
   },
 ];
 
+const debfunc = debounce(async (event: vscode.TextEditorSelectionChangeEvent) => {
+  if (shouldCopy(event)) {
+    const text = generateTextToCopy(event);
+    await copyToClipboard(text);
+  }
+}, 300); // 這個debounce的時間很重要，400及以上的話，雙擊動作也會複製，這是我們不想要的
+
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-
-  vscode.window.onDidChangeTextEditorSelection(function (event: vscode.TextEditorSelectionChangeEvent) {
-    if (shouldCopy(event)) {
-      const text = generateTextToCopy(event);
-      copyToClipboard(text);
-    }
-
-    // awaiter(this, void 0, void 0, function* () {
-    //   if (shouldCopy(event)) {
-    //     const text = generateTextToCopy(event);
-    //     yield copyToClipboard(text);
-    //   }
-    // });
-  });
+  console.log('activate');
+  vscode.window.onDidChangeTextEditorSelection(debfunc);
 
   PY_COMMANDS.forEach((item) => {
     context.subscriptions.push(

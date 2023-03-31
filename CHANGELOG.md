@@ -51,3 +51,19 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## [1.0.2]
 
 - `contributes`-`configuration`-`description` 修改
+
+## [1.0.3]
+
+- 自动复制在实际中有问题，暂时停用掉，优化逻辑再上。
+
+## [1.0.4]
+
+- 遗漏点补发版本
+
+## [1.0.5]
+
+- 放开自动复制能力
+
+## [1.0.6]
+
+- 修复自动复制功能

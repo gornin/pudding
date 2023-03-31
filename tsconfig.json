@@ -2,6 +2,7 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "ES2021",
+    "removeComments": true,
     "outDir": "out",
     "lib": [
       "ES2021"
