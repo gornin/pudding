@@ -3,7 +3,7 @@
   "displayName": "布丁助手",
   "publisher": "gornin",
   "description": "汉字转拼音、简繁互换、自动复制、TO BE CONTINUED...",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "email": "gorningo@outlook.com",
   "engines": {
     "vscode": "^1.76.0"
@@ -68,11 +68,11 @@
     "commands": [
       {
         "command": "pudding.chars-2-pinyin-upper",
-        "title": "汉字->拼音大"
+        "title": "汉字->拼音 大"
       },
       {
         "command": "pudding.chars-2-pinyin-lower",
-        "title": "汉字->拼音小"
+        "title": "汉字->拼音 小"
       },
       {
         "command": "pudding.s-2-t",
