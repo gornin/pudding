@@ -1,11 +1,9 @@
 # Change Log 变更日志
 
-All notable changes to the "pudding" extension will be documented in this file.
+All notable changes to the "pudding" extension will be documented in this file.<br/>
+所有对“pudding”扩展的显著更改都将记录在此文件中。
 
-对“pudding”扩展的所有显著更改都将记录在此文件中。
-
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
-
+Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.<br/>
 查看[Keep a Changelog](http://keepachangelog.com/)的建议以了解关于如何组织这个文件。
 
 ## [0.0.1]
@@ -49,3 +47,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## [1.0.1]
 
 - 修改market中，github仓库地址显示名称
+
+## [1.0.2]
+
+- `contributes`-`configuration`-`description` 修改

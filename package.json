@@ -3,7 +3,7 @@
   "displayName": "布丁助手",
   "publisher": "gornin",
   "description": "汉字转拼音、简繁互换、自动复制、TO BE CONTINUED...",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "email": "gorningo@outlook.com",
   "engines": {
     "vscode": "^1.76.0"
@@ -36,12 +36,12 @@
         "pudding.yourName": {
           "type": "string",
           "default": "guest",
-          "description": "布丁"
+          "description": "你的名字"
         },
         "pudding.showTip": {
           "type": "boolean",
           "default": true,
-          "description": "欢迎，欢迎！"
+          "description": "是否在每次启动时显示欢迎提示！"
         },
         "pudding.copyOnKeyboardSelection": {
           "type": "boolean",
