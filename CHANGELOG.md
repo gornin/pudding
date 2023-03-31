@@ -45,3 +45,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## [1.0.0]
 
 - 更名为【布丁助手】，推出v1版本
+
+## [1.0.1]
+
+- 修改market中，github仓库地址显示名称
