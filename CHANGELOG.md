@@ -71,3 +71,11 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## [1.0.7]
 
 - 移除消息通知
+
+## [1.0.8]
+
+- 定位影响插件启动速度的因素，`activationEvents`
+
+## [1.0.10]
+
+- 探索解决提升插件启动速度

@@ -25,6 +25,7 @@ function tsProcess(textEditor: vscode.TextEditor, options: OPTIONS) {
     selection = new vscode.Range(start, end);
   }
   let text = doc.getText(selection);
+  // vscode.env.clipboard.writeText(text);
   textEditor.edit((builder) => {
     builder.replace(selection, transverter(text, options));
   });
@@ -49,6 +50,7 @@ function transform2Py(
   }
   const { selection } = activeEditor;
   const selected = activeEditor.document.getText(selection);
+  // vscode.env.clipboard.writeText(selected);
   const pinyinArr = pinyin(selected, options);
   let str = pinyinArr.toString().replaceAll(",", connector);
   if (type === "upper") {

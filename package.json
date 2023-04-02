@@ -3,12 +3,12 @@
   "displayName": "布丁助手",
   "publisher": "gornin",
   "description": "汉字转拼音、简繁互换、自动复制、TO BE CONTINUED...",
-  "version": "1.0.7",
+  "version": "1.0.11",
   "email": "gorningo@outlook.com",
   "engines": {
     "vscode": "^1.46.0"
   },
-  "icon": "images/gyl.png",
+  "icon": "logo.jpeg",
   "categories": [
     "Other"
   ],
@@ -33,6 +33,7 @@
   "main": "./out/extension.js",
   "contributes": {
     "configuration": {
+      "type": "object",
       "title": "布丁助手",
       "properties": {
         "pudding.copyOnKeyboardSelection": {
@@ -127,12 +128,23 @@
     }
   },
   "scripts": {
-    "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "pretest": "npm run compile && npm run lint",
+    "prepare": "husky install",
+    "vscode:prepublish": "yarn run build-webpack",
+    "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node",
+    "watch": "webpack -c ./build/webpack.config.js --watch",
+    "build": "yarn run esbuild-base --minify",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "yarn run compile-tests && yarn run compile && yarn run lint",
     "lint": "eslint src --ext ts",
-    "test": "node ./out/test/runTest.js"
+    "test": "node ./out/test/runTest.js",
+    "release": "standard-version -a",
+    "package": "vsce package --no-yarn",
+    "publish": "vsce publish --no-yarn",
+    "build-webpack": "webpack -c ./build/webpack.config.js",
+    "build-esbuild": "node ./build/esbuild.config.js",
+    "build-vite": "vite build -c ./build/vite.config.js",
+    "build-rollup": "yarn run rollup -c ./build/rollup.config.js"
   },
   "devDependencies": {
     "@types/glob": "^8.1.0",
@@ -145,10 +157,40 @@
     "eslint": "^8.36.0",
     "glob": "^8.1.0",
     "mocha": "^10.2.0",
-    "typescript": "^4.9.5"
+    "typescript": "^4.9.5",
+    "ts-loader": "^9.4.2"
   },
   "dependencies": {
     "debounce": "1.0.0",
-    "pinyin": "^3.0.0-alpha.5"
+    "pinyin": "^3.0.0-alpha.5",
+    "@commitlint/cli": "^16.2.4",
+    "@commitlint/config-conventional": "^16.2.4",
+    "@rollup/plugin-commonjs": "^22.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@swc/core": "^1.2.179",
+    "@types/koa": "^2.13.4",
+    "connect": "^3.7.0",
+    "esbuild": "^0.14.38",
+    "esbuild-loader": "^2.18.0",
+    "esbuild-plugin-clean": "^0.9.0",
+    "get-port": "^6.1.2",
+    "http-proxy-middleware": "^2.0.6",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.4.1",
+    "prettier": "^2.6.2",
+    "rollup": "^2.72.1",
+    "rollup-plugin-delete": "^2.0.0",
+    "rollup-plugin-esbuild": "^4.9.1",
+    "rollup-plugin-swc3": "^0.3.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-visualizer": "^5.6.0",
+    "standard-version": "^9.3.2",
+    "typescript": "^4.5.5",
+    "umi-request": "^1.4.0",
+    "vite": "^2.9.8",
+    "vsce": "^2.7.0",
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.9.2"
   }
 }
