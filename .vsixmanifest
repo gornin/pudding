@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 	<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
 		<Metadata>
-			<Identity Language="en-US" Id="pudding" Version="1.0.7" Publisher="gornin" />
+			<Identity Language="en-US" Id="pudding" Version="1.0.11" Publisher="gornin" />
 			<DisplayName>布丁助手</DisplayName>
 			<Description xml:space="preserve">提高开发效率</Description>
 			<Tags>中文,拼音,中文简体,中文繁體,选中文字,自动复制,剪切板</Tags>

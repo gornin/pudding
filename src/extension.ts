@@ -25,6 +25,7 @@ function tsProcess(textEditor: vscode.TextEditor, options: OPTIONS) {
     selection = new vscode.Range(start, end);
   }
   let text = doc.getText(selection);
+  vscode.env.clipboard.writeText(text);
   textEditor.edit((builder) => {
     builder.replace(selection, transverter(text, options));
   });
@@ -49,6 +50,7 @@ function transform2Py(
   }
   const { selection } = activeEditor;
   const selected = activeEditor.document.getText(selection);
+  vscode.env.clipboard.writeText(selected);
   const pinyinArr = pinyin(selected, options);
   let str = pinyinArr.toString().replaceAll(",", connector);
   if (type === "upper") {
@@ -122,7 +124,7 @@ const debfunc = debounce(async (event: vscode.TextEditorSelectionChangeEvent) =>
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
   console.log('activate');
-  vscode.window.onDidChangeTextEditorSelection(debfunc);
+  // vscode.window.onDidChangeTextEditorSelection(debfunc);
 
   PY_COMMANDS.forEach((item) => {
     context.subscriptions.push(
