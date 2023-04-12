@@ -21,8 +21,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## [0.1.0]
 
 - 新增功能（调整代码实现）
-    - 汉字转小写拼音
-    - 简繁互换
+  - 汉字转小写拼音
+  - 简繁互换
 
 ## [0.1.1]
 
@@ -34,7 +34,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [0.1.3]
 
-- 为package.json添加keywords
+- 为 package.json 添加 keywords
 
 ## [0.2.0]
 
@@ -42,11 +42,11 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [1.0.0]
 
-- 更名为【布丁助手】，推出v1版本
+- 更名为【布丁助手】，推出 v1 版本
 
 ## [1.0.1]
 
-- 修改market中，github仓库地址显示名称
+- 修改 market 中，github 仓库地址显示名称
 
 ## [1.0.2]
 
@@ -79,3 +79,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## [1.0.11]
 
 - 选中自动复制功能影响使用体验，屏蔽掉此功能。在调用简繁体转换、大小写转换时会替代性的把选中值复制进剪切板
+
+## [1.0.12]
+
+- 替換 pinyin 庫，修復 windows 安裝擴展無法使用的問題

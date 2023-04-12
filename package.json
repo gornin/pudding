@@ -3,7 +3,7 @@
   "displayName": "布丁助手",
   "publisher": "gornin",
   "description": "汉字转拼音、简繁互换、自动复制、TO BE CONTINUED...",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "email": "gorningo@outlook.com",
   "engines": {
     "vscode": "^1.46.0"
@@ -149,6 +149,6 @@
   },
   "dependencies": {
     "debounce": "1.0.0",
-    "pinyin": "^3.0.0-alpha.5"
+    "pinyin-pro": "^3.13.2"
   }
 }

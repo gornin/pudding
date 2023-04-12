@@ -1,11 +1,16 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
-import pinyin from "pinyin";
-const debounce = require('debounce');
-import { IPinyinMode, IPinyinOptions, IPinyinStyle } from "pinyin/lib/declare";
+// import pinyin from "pinyin";
+import { pinyin } from "pinyin-pro";
+const debounce = require("debounce");
+// import { IPinyinMode, IPinyinOptions, IPinyinStyle } from "pinyin/lib/declare";
 import transverter, { OPTIONS } from "./transverter";
-import { shouldCopy, copyToClipboard, generateTextToCopy } from "./copy2clipboard";
+import {
+  shouldCopy,
+  copyToClipboard,
+  generateTextToCopy,
+} from "./copy2clipboard";
 
 /**
  * 处理简繁转换
@@ -40,7 +45,7 @@ function tsProcess(textEditor: vscode.TextEditor, options: OPTIONS) {
  * @returns
  */
 function transform2Py(
-  options: IPinyinOptions,
+  // options: IPinyinOptions,
   connector: string,
   type: string
 ) {
@@ -51,7 +56,8 @@ function transform2Py(
   const { selection } = activeEditor;
   const selected = activeEditor.document.getText(selection);
   vscode.env.clipboard.writeText(selected);
-  const pinyinArr = pinyin(selected, options);
+  // const pinyinArr = pinyin(selected, options);
+  const pinyinArr = pinyin(selected, { toneType: "none", type: "array" });
   let str = pinyinArr.toString().replaceAll(",", connector);
   if (type === "upper") {
     str = str.toUpperCase();
@@ -66,28 +72,28 @@ function transform2Py(
 const PY_COMMANDS = [
   {
     command: "pudding.chars-2-pinyin-upper",
-    options: {
-      style: "normal" as IPinyinStyle, // 普通风格，即不带声调。
-      mode: "normal" as IPinyinMode,
-      segment: false, // 启用分词 "nodejieba" | "segmentit" | "@node-rs/jieba"
-      group: false, // 启用词组
-      heteronym: false, // 返回多音字
-      compact: false, // 如果设置为 true，则将多音字可能的各种组合排列后返回
-    },
+    // options: {
+    //   style: "normal" as IPinyinStyle, // 普通风格，即不带声调。
+    //   mode: "normal" as IPinyinMode,
+    //   segment: false, // 启用分词 "nodejieba" | "segmentit" | "@node-rs/jieba"
+    //   group: false, // 启用词组
+    //   heteronym: false, // 返回多音字
+    //   compact: false, // 如果设置为 true，则将多音字可能的各种组合排列后返回
+    // },
     connector: "_",
     type: "upper",
     func: transform2Py,
   },
   {
     command: "pudding.chars-2-pinyin-lower",
-    options: {
-      style: "normal" as IPinyinStyle, // 普通风格，即不带声调。
-      mode: "normal" as IPinyinMode,
-      segment: false, // 启用分词 "nodejieba" | "segmentit" | "@node-rs/jieba"
-      group: false, // 启用词组
-      heteronym: false, // 返回多音字
-      compact: false, // 如果设置为 true，则将多音字可能的各种组合排列后返回
-    },
+    // options: {
+    //   style: "normal" as IPinyinStyle, // 普通风格，即不带声调。
+    //   mode: "normal" as IPinyinMode,
+    //   segment: false, // 启用分词 "nodejieba" | "segmentit" | "@node-rs/jieba"
+    //   group: false, // 启用词组
+    //   heteronym: false, // 返回多音字
+    //   compact: false, // 如果设置为 true，则将多音字可能的各种组合排列后返回
+    // },
     connector: "_",
     type: "lower",
     func: transform2Py,
@@ -113,23 +119,28 @@ const TS_COMMANDS = [
   },
 ];
 
-const debfunc = debounce(async (event: vscode.TextEditorSelectionChangeEvent) => {
-  if (shouldCopy(event)) {
-    const text = generateTextToCopy(event);
-    await copyToClipboard(text);
-  }
-}, 300); // 這個debounce的時間很重要，400及以上的話，雙擊動作也會複製，這是我們不想要的
+const debfunc = debounce(
+  async (event: vscode.TextEditorSelectionChangeEvent) => {
+    if (shouldCopy(event)) {
+      const text = generateTextToCopy(event);
+      await copyToClipboard(text);
+    }
+  },
+  300
+); // 這個debounce的時間很重要，400及以上的話，雙擊動作也會複製，這是我們不想要的
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-  console.log('activate');
+  console.log("activate");
   // vscode.window.onDidChangeTextEditorSelection(debfunc);
 
   PY_COMMANDS.forEach((item) => {
     context.subscriptions.push(
-      vscode.commands.registerCommand(item.command, () =>
-        item.func(item.options, item.connector, item.type)
+      vscode.commands.registerCommand(
+        item.command,
+        () => item.func(item.connector, item.type)
+        // item.func(item.options, item.connector, item.type)
       )
     );
   });
@@ -147,4 +158,4 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 // This method is called when your extension is deactivated
-export function deactivate() { }
+export function deactivate() {}
